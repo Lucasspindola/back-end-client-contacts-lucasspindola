@@ -32,6 +32,12 @@ class User {
   @Column()
   password: string;
 
+  @Column()
+  isAdm: boolean;
+  
+  @Column({ default: true })
+  isActive: boolean;
+
   @OneToMany(() => Contact, (contact) => contact.user)
   contacts: Contact[];
 
