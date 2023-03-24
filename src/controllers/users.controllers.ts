@@ -44,9 +44,11 @@ const deleteUserController = async (req: Request, res: Response) => {
 
 const createNewContactController = async (req: Request, res: Response) => {
 // console.log(req.user)
+
+const userClient = req.user;
 const dataContact: IContactRequest = req.body;
-const registerUser = await createNewContactService(dataContact);
-return res.status(204).json("");
+const registerContact = await createNewContactService(dataContact, userClient);
+return res.status(204).json(registerContact);
 }
 
 export {
