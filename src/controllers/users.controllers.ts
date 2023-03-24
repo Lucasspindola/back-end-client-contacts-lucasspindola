@@ -1,3 +1,4 @@
+import { IContactRequest } from './../interfaces/users/index';
 import { Request, Response } from "express";
 import { AppError } from "../errors/AppError";
 import { IUpdateUserRequest, IUserRequest } from "../interfaces/users";
@@ -5,6 +6,7 @@ import createNewUserService from "../services/UserServices/createNewUser.service
 import deleteUserService from "../services/UserServices/deleteUser.services";
 import listAllUsersService from "../services/UserServices/listAllUsers.services";
 import updateDataUserService from "../services/UserServices/updateDataUser.services";
+import createNewContactService from '../services/UserServices/createNewContactService.services';
 
 const createNewUserController = async (req: Request, res: Response) => {
   const dataUser: IUserRequest = req.body;
@@ -38,9 +40,19 @@ const deleteUserController = async (req: Request, res: Response) => {
   return res.status(204).json(userDelete);
 };
 
+// Contact
+
+const createNewContactController = async (req: Request, res: Response) => {
+// console.log(req.user)
+const dataContact: IContactRequest = req.body;
+const registerUser = await createNewContactService(dataContact);
+return res.status(204).json("");
+}
+
 export {
   createNewUserController,
   listAllUsersController,
   updateDataUserController,
   deleteUserController,
+  createNewContactController
 };

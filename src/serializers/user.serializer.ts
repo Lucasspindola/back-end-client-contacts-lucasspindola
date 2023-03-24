@@ -1,3 +1,4 @@
+import { IContactRequest } from './../interfaces/users/index';
 import * as yup from "yup";
 import { SchemaOf } from "yup";
 import {
@@ -14,7 +15,20 @@ const userSerializer: SchemaOf<IUserRequest> = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required(),
   isAdm: yup.boolean().required(),
+  phone: yup.string().matches(/^[0-9]+$/).min(8).max(11).required(),
+  profileImage:yup.string()
 });
+
+
+
+const contactSerializer: SchemaOf<IContactRequest> = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  phone: yup.string().matches(/^[0-9]+$/).min(8).max(11).required(),
+  profileImage:yup.string()
+});
+
+
 const userWithoutPasswordFieldSerializer: SchemaOf<IUserRequestReturnedClient> =
   yup.object().shape({
     name: yup.string().notRequired(),
@@ -76,4 +90,5 @@ export {
   IUpdateUserRequestWithoutPasswordSerializer,
   IUserUpdateRequestSerializer,
   userVetorSerializer,
+  contactSerializer
 };

@@ -22,6 +22,8 @@ import {
   
     @Column()
     email: string;
+    @Column({ default: "" })
+    profileImage: string;
   
     @ManyToOne(() => User, (user) => user.contacts)
     user: User;

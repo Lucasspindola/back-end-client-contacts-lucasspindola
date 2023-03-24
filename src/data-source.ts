@@ -2,7 +2,11 @@ import "reflect-metadata";
 import "dotenv/config";
 import path from "path";
 import { DataSource, DataSourceOptions } from "typeorm";
-
+import { User } from "./entities/user.entity";
+import { Contact } from "./entities/contact.entity";
+import { createTables1679676677504 } from "./migrations/1679676677504-createTables";
+import { createTables1679677847261 } from "./migrations/1679677847261-createTables";
+import { createTables1679682092015 } from "./migrations/1679682092015-createTables";
 const setDataSourceConfig = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, "./entities/**.{js,ts}");
   const migrationsPath: string = path.join(
@@ -39,8 +43,8 @@ const setDataSourceConfig = (): DataSourceOptions => {
     database: process.env.DB,
     synchronize: false,
     logging: true,
-    entities: [entitiesPath],
-    migrations: [migrationsPath],
+    entities: [User, Contact],
+    migrations: [createTables1679676677504, createTables1679677847261, createTables1679682092015],
   };
 };
 
