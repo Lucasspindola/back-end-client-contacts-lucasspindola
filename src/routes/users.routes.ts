@@ -1,6 +1,5 @@
 import { Router } from "express";
 import {
-  createNewContactController,
   createNewUserController,
   deleteUserController,
   listAllUsersController,
@@ -9,7 +8,6 @@ import {
 import validityCheckOfUserByTokenMiddlewares from "../middlewares/validityCheckOfUserByToken.middlewares";
 import dataVerificationByYupMiddlewares from "../middlewares/dataVerificationByYup.middlewares";
 import {
-  contactSerializer,
   IUpdateUserRequestSerializer,
   userSerializer,
 } from "../serializers/user.serializer";
@@ -22,13 +20,6 @@ userRoutes.post(
   "",
   dataVerificationByYupMiddlewares(userSerializer),
   createNewUserController
-);
-
-userRoutes.post(
-  "/contact",
-  validityCheckOfUserByTokenMiddlewares,
-  dataVerificationByYupMiddlewares(contactSerializer),
-  createNewContactController
 );
 
 userRoutes.get(

@@ -1,3 +1,4 @@
+import { Contact } from "../../entities/contact.entity";
 
 export interface IUserRequest {
   name: string;
@@ -9,15 +10,8 @@ export interface IUserRequest {
 }
 
 
-export interface IContactRequest {
-  name: string;
-  email: string;
-  phone: string;
-  profileImage:string
-}
+
  
-  
-  // contacts
 export interface IUserRequestReturnedClient {
   name?: string;
   email?: string;
@@ -26,6 +20,17 @@ export interface IUserRequestReturnedClient {
   isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export interface IUserAndContactsRequestReturnedClient {
+  name?: string;
+  email?: string;
+  isAdm?: boolean;
+  id?: string;
+  isActive?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  contacts: Contact[]
 }
 
 export interface IUpdateUserRequest {
