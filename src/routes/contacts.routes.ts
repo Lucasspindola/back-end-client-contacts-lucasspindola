@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNewContactController, deleteContactController, listContactsController, updateContactController } from "../controllers/contacts.controllers";
+import { createNewContactController, deleteContactController, listContactsController, updateContactController, userContactsListController } from "../controllers/contacts.controllers";
 
 import validityCheckOfUserByTokenMiddlewares from "../middlewares/validityCheckOfUserByToken.middlewares";
 import dataVerificationByYupMiddlewares from "../middlewares/dataVerificationByYup.middlewares";
@@ -19,6 +19,13 @@ contactRoutes.post(
   validityCheckOfUserByTokenMiddlewares,
   dataVerificationByYupMiddlewares(contactSerializer),
   createNewContactController
+);
+
+contactRoutes.get(
+  "/",
+  validityCheckOfUserByTokenMiddlewares,
+  userContactsListController
+
 );
 
 contactRoutes.get(

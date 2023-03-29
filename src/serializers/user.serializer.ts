@@ -29,6 +29,8 @@ const userWithoutPasswordFieldSerializer: SchemaOf<IUserRequestReturnedClient> =
     isActive: yup.boolean().notRequired(),
     createdAt: yup.date().notRequired(),
     updatedAt: yup.date().notRequired(),
+    profileImage: yup.string().notRequired(),
+    phone: yup.string().notRequired()
   });
 const IUpdateUserRequestSerializer: SchemaOf<IUpdateUserRequest> = yup
   .object()

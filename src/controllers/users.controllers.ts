@@ -10,6 +10,7 @@ import updateDataUserService from "../services/UserServices/updateDataUser.servi
 
 const createNewUserController = async (req: Request, res: Response) => {
   const dataUser: IUserRequest = req.body;
+  
   const registerUser = await createNewUserService(dataUser);
   return res.status(201).json(registerUser);
 };
