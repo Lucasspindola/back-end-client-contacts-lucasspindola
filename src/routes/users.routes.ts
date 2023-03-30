@@ -3,6 +3,7 @@ import {
   createNewUserController,
   deleteUserController,
   listAllUsersController,
+  listContactIdController,
   updateDataUserController,
 } from "../controllers/users.controllers";
 import validityCheckOfUserByTokenMiddlewares from "../middlewares/validityCheckOfUserByToken.middlewares";
@@ -29,6 +30,12 @@ userRoutes.get(
   listAllUsersController
 );
 
+userRoutes.get(
+  "/contact/:id",
+  validityCheckOfUserByTokenMiddlewares,
+  listContactIdController
+);
+
 userRoutes.patch(
   "",
   validityCheckOfUserByTokenMiddlewares,
@@ -40,7 +47,6 @@ userRoutes.delete(
   "/:id",
   invalidIdMiddlewarer,
   validityCheckOfUserByTokenMiddlewares,
-  adminPrivateRouteCheckMiddlewar,
   deleteUserController
 );
 
