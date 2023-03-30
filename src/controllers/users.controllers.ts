@@ -24,7 +24,7 @@ const updateDataUserController = async (req: Request, res: Response) => {
   try {
     const dataUserUpdate: IUpdateUserRequest = req.body;
 
-    const idUser = req.params.id;
+    const idUser = req.user.id;
     const userUpdate = await updateDataUserService(dataUserUpdate, idUser);
     return res.json(userUpdate);
   } catch (error) {

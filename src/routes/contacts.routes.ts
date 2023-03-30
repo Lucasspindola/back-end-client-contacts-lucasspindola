@@ -8,7 +8,7 @@ import adminPrivateRouteCheckMiddlewar from "../middlewares/adminPrivateRouteChe
 import invalidIdMiddlewarer from "../middlewares/invalidId.moddlewares";
 import verifyUserExistsMiddlewar from "../middlewares/verifyUserExists.middlewares";
 import privateRouteForUserOrAdminMiddlewar from "../middlewares/privateRouteForUserOrAdmin.middlewares";
-import { IUpdateUserRequestSerializer } from "../serializers/user.serializer";
+
 
 const contactRoutes = Router();
 

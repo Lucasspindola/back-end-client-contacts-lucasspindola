@@ -13,7 +13,7 @@ import {
 const userSerializer: SchemaOf<IUserRequest> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  password: yup.string().required().min(8),
   isAdm: yup.boolean().required(),
   phone: yup.string().matches(/^[0-9]+$/).min(8).max(11).required(),
   profileImage:yup.string()
@@ -36,10 +36,7 @@ const IUpdateUserRequestSerializer: SchemaOf<IUpdateUserRequest> = yup
   .object()
   .shape({
     name: yup.string().notRequired(),
-    email: yup.string().notRequired(),
-    password: yup.string().notRequired(),
-    createdAt: yup.date().notRequired(),
-    updatedAt: yup.date().notRequired(),
+    email: yup.string().notRequired()
   });
 
 

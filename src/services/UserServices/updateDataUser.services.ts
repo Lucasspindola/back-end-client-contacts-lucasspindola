@@ -20,6 +20,10 @@ const updateDataUserService = async (
   if (keysUser.includes("id")) {
     throw new AppError(401, "not");
   }
+  if (keysUser.includes("password")) {
+    throw new AppError(401, "not");
+  }
+  
 
   const userCurrentData = await userRepository.findOne({
     where: { id: idUser },

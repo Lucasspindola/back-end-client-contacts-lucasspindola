@@ -30,11 +30,9 @@ userRoutes.get(
 );
 
 userRoutes.patch(
-  "/:id",
-  invalidIdMiddlewarer,
+  "",
   validityCheckOfUserByTokenMiddlewares,
   dataVerificationByYupMiddlewares(IUpdateUserRequestSerializer),
-
   updateDataUserController
 );
 

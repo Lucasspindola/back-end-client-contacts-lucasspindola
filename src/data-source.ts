@@ -1,6 +1,13 @@
 import "reflect-metadata";
 import "dotenv/config";
 import path from "path";
+import { createTables1680137031800 } from './migrations/1680137031800-createTables';
+import { createTables1680128575981 } from './migrations/1680128575981-createTables';
+import { createTables1680127707734 } from './migrations/1680127707734-createTables';
+
+import { createTables1680128520949 } from './migrations/1680128520949-createTables';
+import { atualization1680127635873 } from './migrations/1680127635873-atualization';
+
 import { DataSource, DataSourceOptions } from "typeorm";
 import { User } from "./entities/user.entity";
 import { Contact } from "./entities/contact.entity";
@@ -44,7 +51,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
     synchronize: false,
     logging: true,
     entities: [User, Contact],
-    migrations: [createTables1679676677504, createTables1679677847261, createTables1679682092015],
+    migrations: [createTables1679676677504, createTables1679677847261, createTables1679682092015, atualization1680127635873,createTables1680127707734,createTables1680128520949,createTables1680128575981,createTables1680137031800],
   };
 };
 

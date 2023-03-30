@@ -21,7 +21,7 @@ const createNewUserService = async (
 
   const user = repositoryUser.create(dataUser);
   await repositoryUser.save(user);
-console.log(user)
+
   const userWithoutPasswordField =
     await userWithoutPasswordFieldSerializer.validate(user, {
       stripUnknown: true,

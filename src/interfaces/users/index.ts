@@ -32,13 +32,11 @@ export interface IUserAndContactsRequestReturnedClient {
   updatedAt?: Date;
   contacts: Contact[]
 }
-
+// ..
 export interface IUpdateUserRequest {
   name?: string;
   email?: string;
-  password?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  // password?: string;
 }
 export interface IUpdateUserResponseClient {
   name?: string;
