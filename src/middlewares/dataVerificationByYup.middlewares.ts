@@ -3,6 +3,7 @@ import { AnySchema } from "yup";
 const dataVerificationByYupMiddlewares =
   (schema: AnySchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
+   
     try {
       const dataValidated = await schema.validate(req.body);
       req.body = dataValidated;

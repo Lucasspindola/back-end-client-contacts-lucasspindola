@@ -3,6 +3,7 @@ import {
   createNewUserController,
   deleteUserController,
   listAllUsersController,
+  listContactIdController,
   updateDataUserController,
 } from "../controllers/users.controllers";
 import validityCheckOfUserByTokenMiddlewares from "../middlewares/validityCheckOfUserByToken.middlewares";
@@ -29,12 +30,16 @@ userRoutes.get(
   listAllUsersController
 );
 
+userRoutes.get(
+  "/contact/:id",
+  validityCheckOfUserByTokenMiddlewares,
+  listContactIdController
+);
+
 userRoutes.patch(
-  "/:id",
-  invalidIdMiddlewarer,
+  "",
   validityCheckOfUserByTokenMiddlewares,
   dataVerificationByYupMiddlewares(IUpdateUserRequestSerializer),
-
   updateDataUserController
 );
 
@@ -42,7 +47,6 @@ userRoutes.delete(
   "/:id",
   invalidIdMiddlewarer,
   validityCheckOfUserByTokenMiddlewares,
-  adminPrivateRouteCheckMiddlewar,
   deleteUserController
 );
 

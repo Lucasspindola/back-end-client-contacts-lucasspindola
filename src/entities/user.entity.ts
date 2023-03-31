@@ -26,8 +26,8 @@ class User {
   @Column()
   phone: string;
 
-  @Column({ default: "" })
-  profileImage: string;
+  @Column({ default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQJGlDRZM5zsQv-p66Q6MYlWMqYgokxPNLOw&usqp=CAU" })
+  profileImage: string | null;
 
   @Column()
   password: string;

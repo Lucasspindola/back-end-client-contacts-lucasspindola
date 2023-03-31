@@ -1,36 +1,17 @@
-// export interface IUserRequest {
-//     name: string
-//     email: string
-//     password: string
-//     isAdm: boolean
-// }
-
-// export interface IUser {
-//     id: string
-//     name: string
-//     email: string
-//     isAdm: boolean
-//     createdAt: Date
-//     updatedAt: Date
-// }
-
-// export interface IUserLogin {
-//     email: string
-//     password: string
-// }
-
-// export interface IUserUpdate {
-//     name?: string
-//     email?: string
-//     password?: string
-// }
+import { Contact } from "../../entities/contact.entity";
 
 export interface IUserRequest {
   name: string;
   email: string;
   password: string;
   isAdm: boolean;
+  phone: string;
+  profileImage:string
 }
+
+
+
+ 
 export interface IUserRequestReturnedClient {
   name?: string;
   email?: string;
@@ -41,12 +22,21 @@ export interface IUserRequestReturnedClient {
   updatedAt?: Date;
 }
 
+export interface IUserAndContactsRequestReturnedClient {
+  name?: string;
+  email?: string;
+  isAdm?: boolean;
+  id?: string;
+  isActive?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  contacts: Contact[]
+}
+// ..
 export interface IUpdateUserRequest {
   name?: string;
   email?: string;
-  password?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  // password?: string;
 }
 export interface IUpdateUserResponseClient {
   name?: string;

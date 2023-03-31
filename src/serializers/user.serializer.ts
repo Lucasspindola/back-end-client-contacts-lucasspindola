@@ -1,3 +1,4 @@
+
 import * as yup from "yup";
 import { SchemaOf } from "yup";
 import {
@@ -12,9 +13,13 @@ import {
 const userSerializer: SchemaOf<IUserRequest> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  password: yup.string().required().min(8),
   isAdm: yup.boolean().required(),
+  phone: yup.string().matches(/^[0-9]+$/).min(8).max(11).required(),
+  profileImage:yup.string()
 });
+
+
 const userWithoutPasswordFieldSerializer: SchemaOf<IUserRequestReturnedClient> =
   yup.object().shape({
     name: yup.string().notRequired(),
@@ -24,16 +29,16 @@ const userWithoutPasswordFieldSerializer: SchemaOf<IUserRequestReturnedClient> =
     isActive: yup.boolean().notRequired(),
     createdAt: yup.date().notRequired(),
     updatedAt: yup.date().notRequired(),
+    profileImage: yup.string().notRequired(),
+    phone: yup.string().notRequired()
   });
 const IUpdateUserRequestSerializer: SchemaOf<IUpdateUserRequest> = yup
   .object()
   .shape({
     name: yup.string().notRequired(),
-    email: yup.string().notRequired(),
-    password: yup.string().notRequired(),
-    createdAt: yup.date().notRequired(),
-    updatedAt: yup.date().notRequired(),
+    email: yup.string().notRequired()
   });
+
 
 const IUpdateUserRequestWithoutPasswordSerializer: SchemaOf<IUpdateUserResponseClient> =
   yup.object().shape({
@@ -75,5 +80,5 @@ export {
   IUpdateUserRequestSerializer,
   IUpdateUserRequestWithoutPasswordSerializer,
   IUserUpdateRequestSerializer,
-  userVetorSerializer,
+  userVetorSerializer
 };
